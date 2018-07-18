@@ -11,7 +11,7 @@
             </transition>
         </div>
         <footer class="footer">
-	<p>Copyright <C2><A9> <a href='http://www.cnblogs.com/elsonwe/'>laowei</a>&nbsp;&nbsp;2018 </p>
+	<p>Copyright <a href='http://www.cnblogs.com/elsonwe/'>laowei</a>&nbsp;&nbsp;2018 </p>
         </footer>
         <!-- 防止disqus导致首页报错 -->
         <div id="disqus_thread"></div>

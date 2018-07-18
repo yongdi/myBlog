@@ -7,4 +7,5 @@ stats.json
 server/configs/private.js
 test-code/
 server/logs/*.log
+.idea
 
