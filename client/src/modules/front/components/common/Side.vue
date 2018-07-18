@@ -2,8 +2,8 @@
     <div class="sideBox">
         <div class="sideBox__mask" :class="{ 'sideBox__mask--show': sideBoxOpen}" @click="closeSideBox"></div>
         <div class="sideBox__main" :class="{ 'sideBox__main--open': sideBoxOpen}">
-            <img src="https://img.imhjm.com/touxiang.png" alt="" class="sideBox__img" @click="backToIndex">
-            <p class="sideBox__name">小深刻的秋鼠</p>
+            <img src="https://s3.amazonaws.com/uploads.hipchat.com/694578/4873119/cvz3nObVtkT1xet/植物僵尸头像.jpg" alt="" class="sideBox__img" @click="backToIndex">
+            <p class="sideBox__name">老维</p>
             <p class="sideBox__motto">Love Life, Love sharing</p>
             <ul class="sideBox__iconList">
                 <li v-for="icon in iconList" class="sideBox__iconItem" :key="icon.name">
@@ -46,7 +46,7 @@ export default {
             scrollTop: 0,
             iconList: [{
                 name: 'github',
-                href: 'https://github.com/BUPT-HJM',
+                href: '',
             }],
         };
     },

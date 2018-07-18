@@ -88,7 +88,7 @@ router.get('*', async(ctx, next) => {
     ctx.type = 'html';
     const s = Date.now();
     let context = {
-        title: 'HJM\'s blog',
+        title: 'laowei\'s blog',
         url: req.url,
         renderURLScript: (type) => {
             if (config[type].url !== '') {

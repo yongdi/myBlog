@@ -16,7 +16,7 @@ let config = {
     },
     admin: { // 后台初始化的用户名密码
         user: 'admin',
-        pwd: 'password',
+        pwd: 'qazwsx',
     },
     disqus: { // disqus
         url: '',

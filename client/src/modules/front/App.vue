@@ -11,8 +11,7 @@
             </transition>
         </div>
         <footer class="footer">
-            <p>Copyright © <a href='https://github.com/BUPT-HJM'>BUPT-HJM</a>&nbsp;&nbsp;2017 </p>
-            <p>Created by <a href="https://github.com/BUPT-HJM/vue-blog.git">vue-blog</a></p>
+	<p>Copyright <C2><A9> <a href='http://www.cnblogs.com/elsonwe/'>laowei</a>&nbsp;&nbsp;2018 </p>
         </footer>
         <!-- 防止disqus导致首页报错 -->
         <div id="disqus_thread"></div>
