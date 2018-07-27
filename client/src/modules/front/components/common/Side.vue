@@ -5,6 +5,7 @@
             <img src="https://s3.amazonaws.com/uploads.hipchat.com/694578/4873119/cvz3nObVtkT1xet/植物僵尸头像.jpg" alt="" class="sideBox__img" @click="backToIndex">
             <p class="sideBox__name">老维</p>
             <p class="sideBox__motto">full stack engineer</p>
+            <p class="sideBox__motto">yongdi@qq.com</p>
             <ul class="sideBox__iconList">
                 <li v-for="icon in iconList" class="sideBox__iconItem" :key="icon.name">
                     <a :href="icon.href"><i class="iconfont" :class="'icon-'+icon.name"></i></a>
@@ -45,8 +46,8 @@ export default {
             // sideBoxOpen: false,
             scrollTop: 0,
             iconList: [{
-                name: 'github',
-                href: '',
+                /*name: 'github',
+                href: '',*/
             }],
         };
     },
