@@ -66,9 +66,15 @@ export async function getAllArticles(ctx) {
             .skip(skip).catch(err => {
                 ctx.throw(500, '服务器内部错误');
             });
+        // 置顶第一篇文章
+        let stick = await Article.findById('5b4eb7892eff2e0c1dc990a4').catch(err => {
+            ctx.throw(500, '服务器内部错误');
+        });
+        articleArr.unshift(stick);
         allNum = await Article.count().catch(err => {
             this.throw(500, '服务器内部错误');
         });
+        allNum++;
     } else {
         let tagArr = tag.split(',');
         // console.log(tagArr)
