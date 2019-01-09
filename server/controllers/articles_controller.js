@@ -2,6 +2,7 @@ import Article from '../models/article.js';
 import md5 from 'md5';
 import jwt from 'jsonwebtoken';
 import config from '../configs/';
+const ObjectId = require('mongoose').Types.ObjectId;
 
 export async function createArticle(ctx) {
     const title = ctx.request.body.title;
@@ -67,7 +68,7 @@ export async function getAllArticles(ctx) {
                 ctx.throw(500, '服务器内部错误');
             });
         // 置顶第一篇文章
-        let stick = await Article.findById('5b4eb7892eff2e0c1dc990a4').catch(err => {
+        let stick = await Article.findById(new ObjectId('5b4eb7892eff2e0c1dc990a4')).catch(err => {
             ctx.throw(500, '服务器内部错误');
         });
         articleArr.unshift(stick);
