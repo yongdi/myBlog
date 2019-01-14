@@ -120,7 +120,7 @@ export async function getAllPublishArticles(ctx) {
                 ctx.throw(500, '服务器内部错误');
             });
         // 置顶第一篇文章
-        if (page === 0) {
+        if (page === 1) {
             let stick = await Article.findById(new ObjectId('5b4eb7892eff2e0c1dc990a4')).catch(err => {
                 ctx.throw(500, '服务器内部错误');
             });
