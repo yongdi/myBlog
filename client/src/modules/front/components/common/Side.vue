@@ -2,7 +2,7 @@
     <div class="sideBox">
         <div class="sideBox__mask" :class="{ 'sideBox__mask--show': sideBoxOpen}" @click="closeSideBox"></div>
         <div class="sideBox__main" :class="{ 'sideBox__main--open': sideBoxOpen}">
-            <img src="https://img.laowei.wang/%E6%A4%8D%E7%89%A9%E5%83%B5%E5%B0%B8%E5%A4%B4%E5%83%8F.jpg" alt="" class="sideBox__img" @click="backToIndex">
+            <img src="https://img.laowei.wang/blog/%E6%A4%8D%E7%89%A9%E5%83%B5%E5%B0%B8%E5%A4%B4%E5%83%8F.jpg" alt="" class="sideBox__img" @click="backToIndex">
             <p class="sideBox__name">老维</p>
             <p class="sideBox__motto">full stack engineer</p>
             <p class="sideBox__motto">yongdi@qq.com</p>
