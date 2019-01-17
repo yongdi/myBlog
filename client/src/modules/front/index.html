@@ -2,11 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <!--在开发环境下不发送refer，以免拿不到cos图片-->
+    <!--<meta name="referrer" content="no-referrer" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <title>{{ title }}</title>
     <% for (var chunk of webpack.chunks) {
         for (var file of chunk.files) {
-          if (file.match(/\.(js|css)$/)) { 
+          if (file.match(/\.(js|css)$/)) {
             if (file.indexOf('admin') == -1) {%>
               <link rel="<%= chunk.initial?'preload':'prefetch' %>"
                 href="<%= htmlWebpackPlugin.files.publicPath + file %>"

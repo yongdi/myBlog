@@ -24,6 +24,9 @@
                     </li>
                 </ul>
             </div>
+            <div>
+                <img class="sideBox__qr" :class="{ 'hide--qr': (scrollTop > 270) }" src="https://img.laowei.wang/blog/1547713078.png" alt="help me build this"/>
+            </div>
         </div>
     </div>
 </template>
@@ -46,8 +49,9 @@ export default {
             // sideBoxOpen: false,
             scrollTop: 0,
             iconList: [{
-                /*name: 'github',
-                href: '',*/
+
+                /* name: '',
+                href: '', */
             }],
         };
     },
@@ -131,6 +135,9 @@ export default {
     width 250px
     float left
     text-align center
+    &__qr
+      width 100%
+      height auto
     &__img
       width 150px
       border-radius 50%
@@ -224,6 +231,8 @@ export default {
       bottom 0
       overflow-y auto
       width 250px
+    .hide--qr
+      display none
   @media screen and (max-width: 850px)
     .sideBox
       position absolute
