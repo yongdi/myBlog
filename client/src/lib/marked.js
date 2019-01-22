@@ -1,6 +1,7 @@
 import highlight from 'highlight.js';
 import marked from 'marked';
-const languages = ['cpp', 'xml', 'bash', 'coffeescript', 'css', 'markdown', 'http', 'java', 'javascript', 'json', 'less', 'makefile', 'nginx', 'php', 'python', 'scss', 'sql', 'stylus'];
+const languages = ['go', 'cpp', 'xml', 'bash', 'coffeescript', 'css', 'markdown', 'http', 'java', 'javascript', 'json', 'less', 'makefile', 'nginx', 'php', 'python', 'scss', 'sql', 'stylus'];
+highlight.registerLanguage('go', require('highlight.js/lib/languages/go'));
 highlight.registerLanguage('cpp', require('highlight.js/lib/languages/cpp'));
 highlight.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
 highlight.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
