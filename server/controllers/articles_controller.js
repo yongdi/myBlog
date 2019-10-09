@@ -162,6 +162,64 @@ export async function getAllPublishArticles(ctx) {
     };
 }
 
+export async function searchPublishArticles(ctx) {
+    const title = ctx.query.title;
+    const page = +ctx.query.page;
+    const limit = +ctx.query.limit || 4;
+    let skip = 0;
+    let articleArr;
+    let allPage;
+    let allNum;
+
+    if (page !== 0) {
+        skip = limit * (page - 1);
+    }
+
+    if (title === '') {
+        articleArr = await Article.find({
+            publish: true,
+        })
+            .populate('tags')
+            .sort({ createTime: -1 })
+            .limit(limit)
+            .skip(skip).catch(err => {
+                ctx.throw(500, '服务器内部错误');
+            });
+        allNum = await Article.find({
+            publish: true,
+        }).count().catch(err => {
+            this.throw(500, '服务器内部错误');
+        });
+        // allNum++;
+    } else {
+        let tagArr = tag.split(',');
+        // console.log(tagArr)
+        articleArr = await Article.find({
+            title: {$regex : title},
+            publish: true,
+        })
+            .populate('tags')
+            .sort({ createTime: -1 })
+            .limit(limit)
+            .skip(skip).catch(err => {
+                ctx.throw(500, '服务器内部错误');
+            });
+        allNum = await Article.find({
+            tags: { $in: tagArr },
+        }).count().catch(err => {
+            ctx.throw(500, '服务器内部错误');
+        });
+    }
+
+    allPage = Math.ceil(allNum / limit);
+
+
+    ctx.body = {
+        success: true,
+        articleArr,
+        allPage: allPage,
+    };
+}
 
 export async function modifyArticle(ctx) {
     // console.log(ctx.request.body)

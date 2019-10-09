@@ -8,5 +8,6 @@ export default async(router) => {
         .patch('/articles/:id', verify, $.modifyArticle)
         .get('/articles/:id', $.getArticle)
         .delete('/articles/:id', verify, $.deleteArticle)
-        .get('/publishArticles', $.getAllPublishArticles);
+        .get('/publishArticles', $.getAllPublishArticles)
+        .get('/searchPublishArticles', $.searchPublishArticles);
 };

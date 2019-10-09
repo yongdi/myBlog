@@ -32,6 +32,14 @@ export function createStore() {
                     });
                 });
             },
+            searchPosts({ commit, state}, title) {
+                return articleApi.searchPublishArticles(title).then(res => {
+                    commit('SEARCH');
+                    return new Promise((resolve, reject) => {
+                        resolve(res);
+                    });
+                })
+            },
             getAllTags({ commit, state }) {
                 return tagApi.getAllTags().then(res => {
                     commit('GET_ALL_TAGS', res.data.tagArr);
@@ -105,6 +113,7 @@ export function createStore() {
                 state.currentPost = article;
                 state.currentPostCompile = marked(state.currentPost.content);
             },
+            SEARCH: (state) => {}
         },
         getters: {
             posts: state => state.posts,

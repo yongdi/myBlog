@@ -19,6 +19,9 @@ export default {
     getAllPublishArticles(tag = '', page = 1, limit = 0) {
         return Axios.get(`/api/publishArticles?tag=${tag}&page=${page}&limit=${limit}`);
     },
+    searchPublishArticles(title, page = 1, limit = 0) {
+        return Axios.get(`/api/searchPublishArticles?title=${title}&page=${page}&limit=${limit}`);
+    },
     saveArticle(id, article) {
         console.log(article);
         return Axios.patch('/api/articles/' + id, article);
