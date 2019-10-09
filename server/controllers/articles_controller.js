@@ -192,7 +192,6 @@ export async function searchPublishArticles(ctx) {
         });
         // allNum++;
     } else {
-        let tagArr = tag.split(',');
         // console.log(tagArr)
         articleArr = await Article.find({
             title: {$regex : title},
@@ -205,7 +204,8 @@ export async function searchPublishArticles(ctx) {
                 ctx.throw(500, '服务器内部错误');
             });
         allNum = await Article.find({
-            tags: { $in: tagArr },
+	   title: {$regex : title},
+             publish: true,
         }).count().catch(err => {
             ctx.throw(500, '服务器内部错误');
         });

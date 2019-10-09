@@ -105,6 +105,7 @@ export default {
             this.$router.push('/');
         },
         search(title) {
+		alert(title);
             articleApi.searchPublishArticles(title);
         },
         getScrollTop() {
