@@ -22,6 +22,7 @@ export function createRouter() {
             { path: '/', component: List },
             { path: '/article/:id', component: Article, meta: { scrollToTop: true } },
             { path: '/page/:page', component: List },
+            { path: '/searchPublishArticles', component: List},
             { path: '*', redirect: '/' },
         ],
     });

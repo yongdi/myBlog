@@ -105,8 +105,9 @@ export default {
             this.$router.push('/');
         },
         search(title) {
-		alert(title);
-            articleApi.searchPublishArticles(title);
+		    alert(title);
+		    return store.dispatch('searchPublishArticles', title);
+            // articleApi.searchPublishArticles(title);
         },
         getScrollTop() {
             let scrollTop = 0,

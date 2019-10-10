@@ -92,6 +92,7 @@ export default {
     methods: {
         ...mapActions([
             'getPost',
+            'searchPosts'
         ]),
         compiledMarkdown(value) {
             return marked(value);

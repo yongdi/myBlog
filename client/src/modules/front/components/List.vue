@@ -97,6 +97,7 @@ export default {
         ...mapActions([
             'getAllPosts',
             'getAllTags',
+            'searchPosts'
         ]),
         compiledMarkdown(value) {
             return marked(value);
