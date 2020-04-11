@@ -7,7 +7,7 @@
             <p class="sideBox__motto">full stack engineer</p>
             <p class="sideBox__motto">yongdi@qq.com</p>
 
-            <input type="text" placeholder="搜索标题..." v-model="search_title" @blur="search(search_title)">
+            <input type="text" placeholder="搜索标题..." v-model="sTitle" @blur="search(sTitle)">
             <ul class="sideBox__iconList">
                 <li v-for="icon in iconList" class="sideBox__iconItem" :key="icon.name">
                     <a :href="icon.href"><i class="iconfont" :class="'icon-'+icon.name"></i></a>
@@ -34,16 +34,10 @@
 </template>
 
 <script>
-import tagApi from 'api/tag.js';
-import throttle from 'lib/throttle.js';
-import articleApi from 'api/article.js';
-import {
-    mapGetters,
-    mapMutations,
-    mapActions,
-} from 'vuex';
+    import throttle from 'lib/throttle.js';
+    import {mapActions, mapGetters, mapMutations,} from 'vuex';
 
-export default {
+    export default {
     name: 'sideBox',
     data() {
         return {
@@ -56,6 +50,7 @@ export default {
                 /* name: '',
                 href: '', */
             }],
+            sTitle: '',
         };
     },
     props: {
@@ -104,11 +99,6 @@ export default {
         backToIndex() {
             this.$router.push('/');
         },
-        search(title) {
-		    alert(title);
-		    return store.dispatch('searchPublishArticles', title);
-            // articleApi.searchPublishArticles(title);
-        },
         getScrollTop() {
             let scrollTop = 0,
                 bodyScrollTop = 0,
@@ -129,6 +119,10 @@ export default {
         },
         clearSelectTagArr() {
             this.setSelectTags([]);
+        },
+        search(sTitle) {
+            // alert(sTitle);
+            this.$store.dispatch('search', sTitle);
         },
     },
     watch: {

@@ -10,6 +10,7 @@ export const NOT_PUBLISH_ARTICLE = 'NOT_PUBLISH_ARTICLE';
 export const GET_ALL_ARTICLES = 'GET_ALL_ARTICLES';
 export const GET_CURRENT_ARTICLE = 'GET_CURRENT_ARTICLE';
 export const DELETE_ARTICLE = 'DELETE_ARTICLE';
+export const SEARCH = 'SEARCH';
 // tag
 export const CREATE_TAG = 'CREATE_TAG';
 export const MODIFY_TAG = 'MODIFY_TAG';

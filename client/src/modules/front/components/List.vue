@@ -32,18 +32,14 @@
 </template>
 
 <script>
-import Pagination from 'publicComponents/Pagination.vue';
-import Loading from 'publicComponents/Loading.vue';
-import Side from './common/Side.vue';
-import articleApi from 'api/article.js';
-import marked from 'lib/marked.js';
+    import Pagination from 'publicComponents/Pagination.vue';
+    import Loading from 'publicComponents/Loading.vue';
+    import Side from './common/Side.vue';
+    import marked from 'lib/marked.js';
 
-import {
-    mapGetters,
-    mapActions,
-} from 'vuex';
+    import {mapActions, mapGetters,} from 'vuex';
 
-export default {
+    export default {
     name: 'list',
     computed: {
         ...mapGetters([
@@ -97,7 +93,6 @@ export default {
         ...mapActions([
             'getAllPosts',
             'getAllTags',
-            'searchPosts'
         ]),
         compiledMarkdown(value) {
             return marked(value);

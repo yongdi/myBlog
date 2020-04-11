@@ -15,18 +15,14 @@
 </template>
 
 <script>
-import Loading from 'publicComponents/Loading.vue';
-import articleApi from 'api/article.js';
-import marked from 'lib/marked.js';
-import Side from './common/Side.vue';
-import Comment from './common/Comment.vue';
+    import Loading from 'publicComponents/Loading.vue';
+    import marked from 'lib/marked.js';
+    import Side from './common/Side.vue';
+    import Comment from './common/Comment.vue';
 
-import {
-    mapGetters,
-    mapActions,
-} from 'vuex';
+    import {mapActions, mapGetters,} from 'vuex';
 
-export default {
+    export default {
     name: 'article_component', // 防止和html元素重名
     data() {
         return {
@@ -92,7 +88,6 @@ export default {
     methods: {
         ...mapActions([
             'getPost',
-            'searchPosts'
         ]),
         compiledMarkdown(value) {
             return marked(value);

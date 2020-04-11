@@ -23,22 +23,24 @@ export function createStore() {
         },
 
         actions: {
+            search({ commit, state }, sTitle) {
+                // alert(sTitle);
+                // return this.$store.dispatch('searchPublishArticles', title);
+                // window.location = '/searchPublishArticles/title=' + title;
+                return articleApi.searchPublishArticles(sTitle).then(res => {
+                    commit('GET_ALL_POSTS', {posts: res.data.articleArr, allPage: res.data.allPage});
+                    return new Promise((resolve, reject) => {
+                        resolve(res);
+                    });
+                });
+            },
             getAllPosts({ commit, state }, { tag = '', page = 1, limit = 5 } = {}) {
-
                 return articleApi.getAllPublishArticles(tag, page, limit).then(res => {
                     commit('GET_ALL_POSTS', { posts: res.data.articleArr, allPage: res.data.allPage, curPage: page });
                     return new Promise((resolve, reject) => {
                         resolve(res);
                     });
                 });
-            },
-            searchPosts({ commit, state}, title) {
-                return articleApi.searchPublishArticles(title).then(res => {
-                    commit('SEARCH');
-                    return new Promise((resolve, reject) => {
-                        resolve(res);
-                    });
-                })
             },
             getAllTags({ commit, state }) {
                 return tagApi.getAllTags().then(res => {
@@ -113,7 +115,6 @@ export function createStore() {
                 state.currentPost = article;
                 state.currentPostCompile = marked(state.currentPost.content);
             },
-            SEARCH: (state) => {}
         },
         getters: {
             posts: state => state.posts,
