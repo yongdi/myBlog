@@ -7,7 +7,7 @@
             <p class="sideBox__motto">full stack engineer</p>
             <p class="sideBox__motto">yongdi@qq.com</p>
 
-            <input type="text" placeholder="搜索标题..." v-model="sTitle" @blur="search(sTitle)" @keyup.enter="search(sTitle)">
+            <input type="text" placeholder="搜索标题..." v-model="sTitle" @keyup.enter="search(sTitle)">
             <ul class="sideBox__iconList">
                 <li v-for="icon in iconList" class="sideBox__iconItem" :key="icon.name">
                     <a :href="icon.href"><i class="iconfont" :class="'icon-'+icon.name"></i></a>
@@ -121,7 +121,7 @@
             this.setSelectTags([]);
         },
         search(sTitle) {
-            // alert(sTitle);
+            alert(sTitle);
             this.$store.dispatch('search', sTitle);
         },
     },
