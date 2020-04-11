@@ -19,7 +19,7 @@ export default {
     getAllPublishArticles(tag = '', page = 1, limit = 0) {
         return Axios.get(`/api/publishArticles?tag=${tag}&page=${page}&limit=${limit}`);
     },
-    searchPublishArticles(title, page = 1, limit = 0) {
+    searchPublishArticles(title, page = 1, limit = 100) {
         return Axios.get(`/api/searchPublishArticles?title=${title}&page=${page}&limit=${limit}`);
     },
     saveArticle(id, article) {

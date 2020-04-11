@@ -1,7 +1,5 @@
 import Article from '../models/article.js';
-import md5 from 'md5';
-import jwt from 'jsonwebtoken';
-import config from '../configs/';
+
 const ObjectId = require('mongoose').Types.ObjectId;
 
 export async function createArticle(ctx) {
@@ -165,7 +163,7 @@ export async function getAllPublishArticles(ctx) {
 export async function searchPublishArticles(ctx) {
     const title = ctx.query.title;
     const page = +ctx.query.page;
-    const limit = +ctx.query.limit || 4;
+    const limit = +ctx.query.limit || 100;
     let skip = 0;
     let articleArr;
     let allPage;
