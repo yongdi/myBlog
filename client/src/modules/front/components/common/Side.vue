@@ -121,7 +121,7 @@
             this.setSelectTags([]);
         },
         search(sTitle) {
-            alert(sTitle);
+            // alert(sTitle);
             this.$store.dispatch('search', sTitle);
         },
     },
