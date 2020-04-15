@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <Side :isInList='true'></Side>
+        <Side :isInList='true' v-on:ddoSearch="dosearch($event)"></Side>
         <div class="list__loading" v-if="isLoading">
             <Loading :loadingMsg='loadingMsg'></Loading>
         </div>
@@ -37,7 +37,7 @@
     import Side from './common/Side.vue';
     import marked from 'lib/marked.js';
 
-    import {mapActions, mapGetters,} from 'vuex';
+    import {mapActions, mapGetters, mapMutations} from 'vuex';
 
     export default {
     name: 'list',
@@ -50,6 +50,7 @@
             'selectTags',
             'searchTags',
             'currentPost',
+            'searchWord',
         ]),
         filterMsg() {
             let msg = '';
@@ -90,9 +91,13 @@
         });
     },
     methods: {
+        ...mapMutations({
+            dosearch: 'DO_SEARCH',
+        }),
         ...mapActions([
             'getAllPosts',
             'getAllTags',
+            'search',
         ]),
         compiledMarkdown(value) {
             return marked(value);
@@ -111,6 +116,13 @@
             this.getAllPosts({
                 tag: this.searchTags,
             }).then(()=> {
+                this.isLoading = false;
+            });
+        },
+        searchWord(nv, ov) {
+            // alert('n:' + nv + ' o:' + ov);
+            this.isLoading = true;
+            this.search(nv).then(() => {
                 this.isLoading = false;
             });
         },

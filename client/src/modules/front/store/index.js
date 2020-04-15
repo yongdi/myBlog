@@ -20,6 +20,7 @@ export function createStore() {
             tags: [],
             selectTags: [],
             sideBoxOpen: false,
+            searchWord: '',
         },
 
         actions: {
@@ -115,6 +116,21 @@ export function createStore() {
                 state.currentPost = article;
                 state.currentPostCompile = marked(state.currentPost.content);
             },
+            DO_SEARCH: (state, word) => {
+                // alert('DO_SEARCH' + word);
+                state.searchWord = word;
+            },
+            SET_ALL_POSTS: (state, { posts, allPage, curPage }) => {
+                if (isNaN(+allPage)) {
+                    allPage = 0;
+                }
+                if (isNaN(+curPage)) {
+                    curPage = 0;
+                }
+                state.posts = posts;
+                state.allPage = +allPage;
+                state.curPage = +curPage;
+            },
         },
         getters: {
             posts: state => state.posts,
@@ -128,6 +144,7 @@ export function createStore() {
             sideBoxOpen: state => state.sideBoxOpen,
             currentPost: state => state.currentPost,
             currentPostCompile: state => state.currentPostCompile,
+            searchWord: state => state.searchWord,
         },
     });
 }
