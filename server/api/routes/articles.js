@@ -6,6 +6,7 @@ export default async(router) => {
     router.get('/articles', verify, $.getAllArticles)
         .post('/articles', verify, $.createArticle)
         .patch('/articles/:id', verify, $.modifyArticle)
+        .patch('/zan/:id', $.zan)
         .get('/articles/:id', $.getArticle)
         .delete('/articles/:id', verify, $.deleteArticle)
         .get('/publishArticles', $.getAllPublishArticles)

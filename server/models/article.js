@@ -21,6 +21,10 @@ const articleSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    useful: {
+        type: Number,
+        default: 0,
+    },
 }, { versionKey: false });
 articleSchema.set('toJSON', { getters: true, virtuals: true });
 articleSchema.set('toObject', { getters: true, virtuals: true });

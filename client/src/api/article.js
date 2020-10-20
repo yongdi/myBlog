@@ -32,6 +32,9 @@ export default {
     notPublishArticle(id) {
         return Axios.patch('/api/articles/' + id, { publish: false });
     },
+    zan(id) {
+        return Axios.patch('/api/zan/' + id);
+    },
     deleteArticle(id) {
         return Axios.delete('/api/articles/' + id);
     },

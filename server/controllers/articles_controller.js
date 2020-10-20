@@ -287,6 +287,20 @@ export async function deleteArticle(ctx) {
     };
 }
 
+export async function zan(ctx) {
+    const id = ctx.params.id;
+    const article = await Article.findByIdAndUpdate(id, {$inc: { useful: 1 }}).catch(err => {
+        if (err.name === 'CastError') {
+            this.throw(400, 'id不存在');
+        } else {
+            this.throw(500, '服务器内部错误');
+        }
+    });
+    ctx.body = {
+        success: true,
+    };
+}
+
 export async function publishArticle(ctx) {
     const id = ctx.params.id;
     const article = await Article.findByIdAndUpdate(id, { $set: { publish: true } }).catch(err => {

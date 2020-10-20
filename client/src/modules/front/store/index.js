@@ -12,6 +12,7 @@ export function createStore() {
             currentPost: {
                 content: '',
                 id: '',
+                useful: 0,
             },
             currentPostCompile: '',
             posts: [],
@@ -24,7 +25,7 @@ export function createStore() {
         },
 
         actions: {
-            search({ commit, state }, sTitle) {
+            search({commit, state}, sTitle) {
                 // alert(sTitle);
                 // return this.$store.dispatch('searchPublishArticles', title);
                 // window.location = '/searchPublishArticles/title=' + title;
@@ -35,15 +36,23 @@ export function createStore() {
                     });
                 });
             },
-            getAllPosts({ commit, state }, { tag = '', page = 1, limit = 5 } = {}) {
-                return articleApi.getAllPublishArticles(tag, page, limit).then(res => {
-                    commit('GET_ALL_POSTS', { posts: res.data.articleArr, allPage: res.data.allPage, curPage: page });
+            zan({commit, state}, id) {
+                alert('谢谢支持🙏');
+                articleApi.zan(id).then(res => {
                     return new Promise((resolve, reject) => {
                         resolve(res);
                     });
                 });
             },
-            getAllTags({ commit, state }) {
+            getAllPosts({commit, state}, {tag = '', page = 1, limit = 5} = {}) {
+                return articleApi.getAllPublishArticles(tag, page, limit).then(res => {
+                    commit('GET_ALL_POSTS', {posts: res.data.articleArr, allPage: res.data.allPage, curPage: page});
+                    return new Promise((resolve, reject) => {
+                        resolve(res);
+                    });
+                });
+            },
+            getAllTags({commit, state}) {
                 return tagApi.getAllTags().then(res => {
                     commit('GET_ALL_TAGS', res.data.tagArr);
                     return new Promise((resolve, reject) => {
@@ -51,7 +60,7 @@ export function createStore() {
                     });
                 });
             },
-            getPost({ commit, state }, id) {
+            getPost({commit, state}, id) {
                 let article = state.posts.find((post) => post.id === id);
                 if (!article && state.currentPost.id === id) {
                     article = state.currentPost;
@@ -75,7 +84,7 @@ export function createStore() {
         },
 
         mutations: {
-            GET_ALL_POSTS: (state, { posts, allPage, curPage }) => {
+            GET_ALL_POSTS: (state, {posts, allPage, curPage}) => {
                 if (isNaN(+allPage)) {
                     allPage = 0;
                 }
@@ -92,7 +101,7 @@ export function createStore() {
             SET_SELECT_TAGS: (state, tags) => {
                 state.selectTags = tags;
             },
-            TOGGLE_SELECT_TAGS: (state, { id, name }) => {
+            TOGGLE_SELECT_TAGS: (state, {id, name}) => {
                 if (typeof state.selectTags.find(function (e) {
                     return e.id === id;
                 }) === 'undefined') {
@@ -120,7 +129,7 @@ export function createStore() {
                 // alert('DO_SEARCH' + word);
                 state.searchWord = word;
             },
-            SET_ALL_POSTS: (state, { posts, allPage, curPage }) => {
+            SET_ALL_POSTS: (state, {posts, allPage, curPage}) => {
                 if (isNaN(+allPage)) {
                     allPage = 0;
                 }
