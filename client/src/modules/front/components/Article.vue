@@ -9,10 +9,11 @@
             <p class="article__time">{{currentPost.createTime}}</p>
             <div class="article__content markdown-body" v-html="currentPostCompile" ref="post">
             </div>
-            <Comment :sourceId="currentPost.id"></Comment>
             <div>
+                <br>
                 有用：{{currentPost.useful}} <button class="far fa-thumbs-up" @click="zan(currentPost.id)">点赞👍</button>
             </div>
+            <Comment :sourceId="currentPost.id"></Comment>
         </div>
     </div>
 </template>
