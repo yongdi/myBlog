@@ -62,7 +62,7 @@
     "eslint-plugin-vue": "^4.5.0",
     "event-source-polyfill": "^0.0.12",
     "extract-text-webpack-plugin": "^2.1.0",
-    "file-loader": "*",
+    "file-loader": "^1.0.0",
     "html-webpack-plugin": "^2.28.0",
     "jsonwebtoken": "^7.3.0",
     "nodemon": "^1.11.0",
