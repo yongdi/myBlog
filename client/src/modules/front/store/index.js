@@ -30,8 +30,8 @@ export function createStore() {
 
         actions: {
             leaveMessage({commit, state}, msg) {
-                commit('UPDATE_NOTE', {msg: msg});
-		alert('set ' + msg);    
+                commit('UPDATE_NOTE', {note_message: msg});
+                alert('set ok');
                 //return new Promise((resolve, reject) => {
                   //  resolve();
                 //});
@@ -95,8 +95,8 @@ export function createStore() {
         },
 
         mutations: {
-            UPDATE_NOTE: (state, msg) => {
-                state.note_message = msg;
+            UPDATE_NOTE: (state, note_message) => {
+                state.note_message = note_message;
             },
             GET_ALL_POSTS: (state, {posts, allPage, curPage}) => {
                 if (isNaN(+allPage)) {

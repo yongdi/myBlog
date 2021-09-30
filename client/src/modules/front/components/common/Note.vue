@@ -2,23 +2,21 @@
     <div class="note-box">
         <h2>{{m}}</h2>
         <br>
-        <form>
             <input class="note-input" type="text" v-model="m" placeholder="edit me">
             <br>
-            <input class="el-button--primary" type="submit" @click="leaveMessage(m)" value="提交">
-        </form>
+            <input class="el-button--primary" type="submit" @click="leaveMessage(m)" value="更新">
 
     </div>
 </template>
 
 <script>
-import {mapActions, mapGetters, mapMutations} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 
 export default {
     name: 'note-box',
     data() {
         return {
-            m: '操',
+            m: '空',
         };
     },
     computed: {
@@ -32,13 +30,13 @@ export default {
         ]),
     },
     created() {
-        this.m = this.note_message;
+        this.m = note_message();
     },
     watch: {
-        note_message: function(n, o) {
-	    this.m = n;
-        }
-    }
+        // note_message: function(n, o) {
+	      //     this.m = n;
+        // },
+    },
 };
 </script>
 
