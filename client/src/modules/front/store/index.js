@@ -29,6 +29,12 @@ export function createStore() {
         },
 
         actions: {
+            leaveMessage({commit, state}, msg) {
+                commit('UPDATE_NOTE', {msg: msg});
+                return new Promise((resolve, reject) => {
+                    resolve();
+                });
+            },
             search({commit, state}, sTitle) {
                 // alert(sTitle);
                 // return this.$store.dispatch('searchPublishArticles', title);

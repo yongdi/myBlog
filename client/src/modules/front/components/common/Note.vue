@@ -27,9 +27,9 @@ export default {
         ]),
     },
     methods: {
-        ...mapMutations({
-            leaveMessage: 'UPDATE_NOTE',
-        }),
+        ...mapActions([
+            'leaveMessage',
+        ]),
     },
     created() {
         this.m = this.note_message;
