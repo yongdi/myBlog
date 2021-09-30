@@ -3,8 +3,7 @@ import Vuex from 'vuex';
 import articleApi from 'api/article.js';
 import tagApi from 'api/tag.js';
 import marked from 'lib/marked.js';
-const NodeCache = require( 'node-cache' );
-const myCache = new NodeCache();
+var mcache = require('memory-cache');
 
 Vue.use(Vuex);
 
@@ -24,13 +23,13 @@ export function createStore() {
             selectTags: [],
             sideBoxOpen: false,
             searchWord: '',
-            note_message: myCache.get('note'),
+            note_message: mcache.get('nm'),
         },
 
         actions: {
             leaveMessage({commit, state}, message) {
                 alert('i get mesasge !' + message);
-                myCache.set('note', message);
+                mcache.put('note', message);
                 return new Promise((resolve, reject) => {
                     resolve();
                 });
