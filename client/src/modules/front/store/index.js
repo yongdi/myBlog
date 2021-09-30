@@ -3,11 +3,13 @@ import Vuex from 'vuex';
 import articleApi from 'api/article.js';
 import tagApi from 'api/tag.js';
 import marked from 'lib/marked.js';
-var mcache = require('memory-cache');
+// import Axios from 'axios';
+// var cache = require('memory-cache');
 
 Vue.use(Vuex);
 
 export function createStore() {
+    // const mcache = new cache.Cache();
     return new Vuex.Store({
         state: {
             currentPost: {
@@ -23,17 +25,10 @@ export function createStore() {
             selectTags: [],
             sideBoxOpen: false,
             searchWord: '',
-            note_message: mcache.get('nm'),
+            note_message: 'default',
         },
 
         actions: {
-            leaveMessage({commit, state}, message) {
-                alert('i get mesasge !' + message);
-                mcache.put('note', message);
-                return new Promise((resolve, reject) => {
-                    resolve();
-                });
-            },
             search({commit, state}, sTitle) {
                 // alert(sTitle);
                 // return this.$store.dispatch('searchPublishArticles', title);
@@ -93,6 +88,9 @@ export function createStore() {
         },
 
         mutations: {
+            UPDATE_NOTE: (state, msg) => {
+                state.note_message = msg;
+            },
             GET_ALL_POSTS: (state, {posts, allPage, curPage}) => {
                 if (isNaN(+allPage)) {
                     allPage = 0;
@@ -163,7 +161,7 @@ export function createStore() {
             currentPost: state => state.currentPost,
             currentPostCompile: state => state.currentPostCompile,
             searchWord: state => state.searchWord,
-            get_note_message: state => state.note_message,
+            note_message: state => state.note_message,
         },
     });
 }

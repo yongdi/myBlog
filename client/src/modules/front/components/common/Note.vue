@@ -1,35 +1,34 @@
 <template>
     <div class="note-box">
-        <h2>{{m}}</h2>
+        <h2>{{note_message}}</h2>
         <br>
         <form>
-            <input class="note-input" type="text" v-model="m" placeholder="edit me">
+            <input class="note-input" type="text" v-model="note_message" placeholder="edit me">
             <br>
-            <input class="el-button--primary" type="submit" @click="leaveMessage(m)" value="提交">
+            <input class="el-button--primary" type="submit" @click="leaveMessage(note_message)" value="提交">
         </form>
 
     </div>
 </template>
 
 <script>
-import {mapActions, mapGetters,} from 'vuex';
+import {mapActions, mapGetters, mapMutations} from 'vuex';
 
 export default {
     name: 'note-box',
     data() {
         return {
-            m: '空',
         };
     },
     computed: {
         ...mapGetters([
-            'get_note_message',
+            'note_message',
         ]),
     },
     methods: {
-        ...mapActions([
-            'leaveMessage',
-        ]),
+        ...mapMutations({
+            leaveMessage: 'UPDATE_NOTE',
+        }),
     },
     created() {
         this.m = this.get_note_message;
