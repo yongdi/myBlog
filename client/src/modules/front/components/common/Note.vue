@@ -1,11 +1,11 @@
 <template>
     <div class="note-box">
-        <h2>{{note_message}}</h2>
+        <h2>{{m}}</h2>
         <br>
         <form>
-            <input class="note-input" type="text" v-model="note_message" placeholder="edit me">
+            <input class="note-input" type="text" v-model="m" placeholder="edit me">
             <br>
-            <input class="el-button--primary" type="submit" @click="leaveMessage(note_message)" value="提交">
+            <input class="el-button--primary" type="submit" @click="leaveMessage(m)" value="提交">
         </form>
 
     </div>
@@ -18,6 +18,7 @@ export default {
     name: 'note-box',
     data() {
         return {
+            m: '操',
         };
     },
     computed: {
@@ -31,7 +32,7 @@ export default {
         }),
     },
     created() {
-        this.m = this.get_note_message;
+        this.m = this.note_message;
     },
 };
 </script>
