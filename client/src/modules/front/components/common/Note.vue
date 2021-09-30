@@ -1,0 +1,49 @@
+<template>
+    <div class="note-box">
+        <h2>{{m}}</h2>
+        <br>
+        <form>
+            <input class="note-input" type="text" v-model="m" placeholder="edit me">
+            <br>
+            <input class="el-button--primary" type="submit" @click="leaveMessage(m)" value="提交">
+        </form>
+
+    </div>
+</template>
+
+<script>
+import {mapActions, mapGetters,} from 'vuex';
+
+export default {
+    name: 'note-box',
+    data() {
+        return {
+            m: '空',
+        };
+    },
+    computed: {
+        ...mapGetters([
+            'get_note_message',
+        ]),
+    },
+    methods: {
+        ...mapActions([
+            'leaveMessage',
+        ]),
+    },
+    created() {
+        this.m = this.get_note_message;
+    },
+};
+</script>
+
+<style lang="stylus" scoped>
+.note-box
+  position relative
+  padding-top 180px
+  padding-left 50px
+  min-height 180px
+  margin-bottom 120px
+.note-input
+  border-style: groove
+</style>

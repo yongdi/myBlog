@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import articleApi from 'api/article.js';
 import tagApi from 'api/tag.js';
 import marked from 'lib/marked.js';
+const NodeCache = require( 'node-cache' );
+const myCache = new NodeCache();
 
 Vue.use(Vuex);
 
@@ -22,9 +24,17 @@ export function createStore() {
             selectTags: [],
             sideBoxOpen: false,
             searchWord: '',
+            note_message: myCache.get('note'),
         },
 
         actions: {
+            leaveMessage({commit, state}, message) {
+                alert('i get mesasge !' + message);
+                myCache.set('note', message);
+                return new Promise((resolve, reject) => {
+                    resolve();
+                });
+            },
             search({commit, state}, sTitle) {
                 // alert(sTitle);
                 // return this.$store.dispatch('searchPublishArticles', title);
@@ -154,6 +164,7 @@ export function createStore() {
             currentPost: state => state.currentPost,
             currentPostCompile: state => state.currentPostCompile,
             searchWord: state => state.searchWord,
+            get_note_message: state => state.note_message,
         },
     });
 }
