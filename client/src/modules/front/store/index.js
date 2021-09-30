@@ -25,15 +25,16 @@ export function createStore() {
             selectTags: [],
             sideBoxOpen: false,
             searchWord: '',
-            note_message: 'default',
+            note_message: '',
         },
 
         actions: {
             leaveMessage({commit, state}, msg) {
                 commit('UPDATE_NOTE', {msg: msg});
-                return new Promise((resolve, reject) => {
-                    resolve();
-                });
+		alert('set ' + msg);    
+                //return new Promise((resolve, reject) => {
+                  //  resolve();
+                //});
             },
             search({commit, state}, sTitle) {
                 // alert(sTitle);

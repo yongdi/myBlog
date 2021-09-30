@@ -34,6 +34,11 @@ export default {
     created() {
         this.m = this.note_message;
     },
+    watch: {
+        note_message: function(n, o) {
+	    this.m = n;
+        }
+    }
 };
 </script>
 
