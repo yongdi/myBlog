@@ -1,11 +1,10 @@
 <template>
     <div class="note-box">
         <h2>{{m}}</h2>
-        <br>
-            <input class="note-input" type="text" v-model="m" placeholder="edit me">
-            <br>
-            <input class="el-button--primary" type="submit" @click="leaveMessage(m)" value="更新">
+<!--      <h2>{{note_message.note_message}}</h2>-->
 
+        <br>
+        <input name="msg" class="note-input" type="text" v-model="m" v-on:blur="leaveMessage(m)">
     </div>
 </template>
 
@@ -16,26 +15,30 @@ export default {
     name: 'note-box',
     data() {
         return {
-            m: '空',
+            m: '空'
         };
     },
+    mounted() {
+        // this.m = this.note_message.note_message
+    },
     computed: {
-        ...mapGetters([
-            'note_message',
-        ]),
+        ...mapGetters(['note_message'])
     },
     methods: {
         ...mapActions([
             'leaveMessage',
+            'getMessage',
         ]),
     },
     created() {
-        this.m = note_message();
+        // 自动触发一个get来改变mutation
+        this.$store.dispatch('getMessage')
     },
+    // 必须用一个watcher才能观察到mutation的变化
     watch: {
-        // note_message: function(n, o) {
-	      //     this.m = n;
-        // },
+        note_message: function(n, o) {
+            this.m = n.note_message;
+        },
     },
 };
 </script>
