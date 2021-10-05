@@ -4,7 +4,7 @@
 <!--      <h2>{{note_message.note_message}}</h2>-->
 
         <br>
-        <input name="msg" class="note-input" type="text" v-model="m" v-on:blur="leaveMessage(m)">
+        <textarea class="note-input" rows="10" cols="40" v-model="m" v-on:blur="leaveMessage(m)" />
     </div>
 </template>
 
