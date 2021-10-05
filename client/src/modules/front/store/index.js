@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import articleApi from 'api/article.js';
 import tagApi from 'api/tag.js';
+import noteApi from 'api/note.js';
 import marked from 'lib/marked.js';
 // import Axios from 'axios';
 // var cache = require('memory-cache');
@@ -29,12 +30,24 @@ export function createStore() {
         },
 
         actions: {
+            getMessage({commit, state}) {
+                return noteApi.getNote().then(res => {
+                    // alert('get ' + res.data.message);
+                    commit('UPDATE_NOTE', {note_message: res.data.message});
+                    return new Promise((resolve, reject) => {
+                        resolve(res);
+                    });
+                });
+            },
             leaveMessage({commit, state}, msg) {
-                commit('UPDATE_NOTE', {note_message: msg});
-                alert('set ok');
-                //return new Promise((resolve, reject) => {
-                  //  resolve();
-                //});
+                // alert('input: ' + msg);
+                return noteApi.createNote(msg).then(res => {
+                    // alert('set ' + res.data.message);
+                    commit('UPDATE_NOTE', {note_message: res.data.message});
+                    return new Promise((resolve, reject) => {
+                        resolve(res);
+                    });
+                });
             },
             search({commit, state}, sTitle) {
                 // alert(sTitle);
@@ -95,8 +108,8 @@ export function createStore() {
         },
 
         mutations: {
-            UPDATE_NOTE: (state, note_message) => {
-                state.note_message = note_message;
+            UPDATE_NOTE: (state, message) => {
+                state.note_message = message;
             },
             GET_ALL_POSTS: (state, {posts, allPage, curPage}) => {
                 if (isNaN(+allPage)) {
