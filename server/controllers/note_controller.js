@@ -1,7 +1,5 @@
 import Note from '../models/note';
-const NodeCache = require('node-cache');
-const myCache = new NodeCache();
-const key = 'ck'
+const ch = require('./cache');
 
 /*export async function init() {
     const n = await Note.count().catch(err => {
@@ -22,7 +20,7 @@ const key = 'ck'
 }*/
 
 export async function init() {
-    myCache.set(key, 'hello world')
+    ch.cache.set(ch.keyNode, 'hello world')
 }
 
 /*export async function createNote(ctx) {
@@ -47,7 +45,7 @@ export async function init() {
 }*/
 export async function createNote(ctx) {
     const msg = ctx.request.body.msg;
-    myCache.set(key, msg)
+    ch.cache.set(ch.keyNode, msg)
     ctx.body = {
         success: true,
         message: msg,
@@ -66,7 +64,7 @@ export async function createNote(ctx) {
 }*/
 
 export async function getNote(ctx) {
-    let v = myCache.get(key)
+    let v = ch.cache.get(ch.keyNode)
     // console.log('server find pk: ' + note.message);
     ctx.body = {
         success: true,

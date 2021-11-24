@@ -9,3 +9,5 @@ test-code/
 server/logs/*.log
 .idea
 *ckage-lock.json
+/nbproject/
+*.lock
